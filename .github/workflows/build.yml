@@ -11,4 +11,5 @@ jobs:
             dotnet-version: 6.0.x
       - name: Build
         run: |
-          dotnet build
+          nuget restore
+          msbuild ShapesBalanceXamFormsApp/ShapesBalanceXamFormsApp.csproj
