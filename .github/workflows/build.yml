@@ -12,4 +12,4 @@ jobs:
       - name: Build
         run: |
           nuget restore
-          msbuild ShapesBalanceXamFormsApp/ShapesBalanceXamFormsApp.csproj
+          dotnet build
