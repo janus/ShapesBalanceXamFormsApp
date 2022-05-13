@@ -8,193 +8,85 @@
 
   
 
-    <ScrollView>
-        <StackLayout>
-
-
- 
-            <ContentView  InputTransparent="False" 
-                          IsEnabled="False" 
-                          Opacity="10" 
+    <ContentView  InputTransparent="False"
+                          IsEnabled="False"
+                          Opacity="10"
                           BackgroundColor="White">
-                <RelativeLayout    HeightRequest="450" WidthRequest="450" BackgroundColor="White" HorizontalOptions="Center" VerticalOptions="Center">
 
-                    <Path Stroke="Red" 
-                          StrokeLineCap="Round" 
-                          StrokeThickness="10">
+                <RelativeLayout    HeightRequest="500" WidthRequest=" 500" BackgroundColor="White" HorizontalOptions="Center" VerticalOptions="Center">
 
+
+
+                    <Path x:Name="grayPath" Stroke="Black" 
+              StrokeThickness="4" HorizontalOptions="Start" VerticalOptions="Start">
                         <Path.Data>
                             <PathGeometry>
                                 <PathGeometry.Figures>
                                     <PathFigureCollection>
-
-
-
-
-
-
-                                        <PathFigure StartPoint="50,200">
+                                        <PathFigure x:Name="grayPathFigure">
                                             <PathFigure.Segments>
                                                 <PathSegmentCollection>
-                                                    <ArcSegment Size="150,150"
-                                                                RotationAngle="45"
-                                                                IsLargeArc="False"
-                                                                SweepDirection="Clockwise"
-                                                                Point="100,90" />
+                                                    <ArcSegment x:Name="grayArcSegment" SweepDirection="Clockwise" />
+
 
 
                                                 </PathSegmentCollection>
-
-
-
                                             </PathFigure.Segments>
                                         </PathFigure>
-
-
                                     </PathFigureCollection>
                                 </PathGeometry.Figures>
                             </PathGeometry>
                         </Path.Data>
                     </Path>
-                    <Path Stroke="Yellow" 
-                          StrokeLineCap="Round" 
-                          StrokeThickness="10">
-
+                    <Path x:Name="pathRoot" Stroke="Green" 
+              StrokeThickness="4" HorizontalOptions="Start" VerticalOptions="Start">
                         <Path.Data>
                             <PathGeometry>
                                 <PathGeometry.Figures>
                                     <PathFigureCollection>
-
-
-
-
-
-
-                                        <PathFigure StartPoint="120,75">
+                                        <PathFigure x:Name="pathFigure" >
                                             <PathFigure.Segments>
                                                 <PathSegmentCollection>
-                                                    <ArcSegment Size="150,150"
-                                                                RotationAngle="45"
-                                                                IsLargeArc="False"
-                                                                SweepDirection="Clockwise"
-                                                                Point="200,50" />
-
-
+                                                    <ArcSegment x:Name="arcSegment" SweepDirection="Clockwise" />
                                                 </PathSegmentCollection>
-
-
-
                                             </PathFigure.Segments>
                                         </PathFigure>
-
-
                                     </PathFigureCollection>
                                 </PathGeometry.Figures>
                             </PathGeometry>
                         </Path.Data>
                     </Path>
-                    <Path Stroke="Blue" 
-                          StrokeLineCap="Round" 
-                          StrokeThickness="10">
-
+                    <Path x:Name="pathRoot2" Stroke="Yellow" 
+              StrokeThickness="4" HorizontalOptions="Start" VerticalOptions="Start">
                         <Path.Data>
                             <PathGeometry>
                                 <PathGeometry.Figures>
                                     <PathFigureCollection>
-
-
-
-
-
-
-                                        <PathFigure StartPoint="220,50">
+                                        <PathFigure x:Name="pathFigure2" >
                                             <PathFigure.Segments>
                                                 <PathSegmentCollection>
-                                                    <ArcSegment Size="150,150"
-                                                                RotationAngle="45"
-                                                                IsLargeArc="False"
-                                                                SweepDirection="Clockwise"
-                                                                Point="350,200" />
-
-
+                                                    <ArcSegment x:Name="arcSegment2" SweepDirection="Clockwise" />
                                                 </PathSegmentCollection>
-
-
-
                                             </PathFigure.Segments>
                                         </PathFigure>
-
-
                                     </PathFigureCollection>
                                 </PathGeometry.Figures>
                             </PathGeometry>
                         </Path.Data>
                     </Path>
-                    <Path Stroke="Gray"
-                          StrokeLineCap="Round"
-                          StrokeThickness="10">
+                    <Path x:Name="pathRoot3" Stroke="Blue" 
+              StrokeThickness="4" HorizontalOptions="Start" VerticalOptions="Start">
                         <Path.Data>
                             <PathGeometry>
                                 <PathGeometry.Figures>
                                     <PathFigureCollection>
-
-
-
-
-                                        <PathFigure StartPoint="50,220" >
+                                        <PathFigure x:Name="pathFigure3" >
                                             <PathFigure.Segments>
                                                 <PathSegmentCollection>
-                                                    <ArcSegment Size="150,150"                                                               
-                                                                RotationAngle="90"
-                                                                IsLargeArc="False"
-                                                                SweepDirection="CounterClockwise"
-                                                                Point="200,370" />
-
+                                                    <ArcSegment x:Name="arcSegment3" SweepDirection="Clockwise" />
                                                 </PathSegmentCollection>
-
-
-
                                             </PathFigure.Segments>
                                         </PathFigure>
-
-
-
-
-                                    </PathFigureCollection>
-                                </PathGeometry.Figures>
-                            </PathGeometry>
-                        </Path.Data>
-                    </Path>
-                    <Path Stroke="Green"
-                          StrokeLineCap="Round"
-                          StrokeThickness="10">
-                        <Path.Data>
-                            <PathGeometry>
-                                <PathGeometry.Figures>
-                                    <PathFigureCollection>
-
-
-
-
-                                        <PathFigure StartPoint="220,370" >
-                                            <PathFigure.Segments>
-                                                <PathSegmentCollection>
-                                                    <ArcSegment Size="150,150"                                                               
-                                                                RotationAngle="90"
-                                                                IsLargeArc="False"
-                                                                SweepDirection="CounterClockwise"
-                                                                Point="350,220" />
-
-                                                </PathSegmentCollection>
-
-
-
-                                            </PathFigure.Segments>
-                                        </PathFigure>
-
-
-
-
                                     </PathFigureCollection>
                                 </PathGeometry.Figures>
                             </PathGeometry>
@@ -202,42 +94,34 @@
                     </Path>
 
 
-                    <StackLayout 
-                        VerticalOptions="Center" 
+
+
+                    <StackLayout
+                        VerticalOptions="Center"
                         HorizontalOptions="Center"
-                        Orientation="Vertical" 
-                        Spacing="1"  
+                        Orientation="Vertical"
+                        Spacing="1"
                         TranslationY="170">
 
                         <Grid>
                             <StackLayout  HorizontalOptions="Center"
-                                Orientation="Horizontal" 
-                                Spacing="1" 
+                                Orientation="Horizontal"
+                                Spacing="1"
                                 TranslationX="0">
                                 <Grid>
-                                    <Label Text="€"
-                                                                   HorizontalOptions="Start"
-                                                                   VerticalOptions="CenterAndExpand"
-                                                                   FontSize="30"
-                                                                   TranslationY="-10"
-                                                                   TextColor="Black"/>
-                                </Grid>
-                                <Grid>
-                                    <Label Text="3,108"
+                                    <Label x:Name="Currency" 
                                                                    HorizontalOptions="Center"
                                                                    VerticalOptions="CenterAndExpand"
-                                                                   FontSize="60"
-                                                                   TextColor="Black"/>
+                                                                   FontSize="40"
+                                                                   TextColor="Red"/>
                                 </Grid>
                                 <Grid>
-                                    <Label Text=".56"
+                                    <Label x:Name="Amount" Text="1386.56"
                                                                    HorizontalOptions="Center"
                                                                    VerticalOptions="CenterAndExpand"
-                                                                   FontSize="35"
-                                                                   TranslationY="-10"
-                                                                   TextColor="Black"/>
+                                                                   FontSize="40"
+                                                                   TextColor="Red"/>
                                 </Grid>
-
 
                             </StackLayout>
                         </Grid>
@@ -250,7 +134,7 @@
                                                                    HorizontalOptions="Center"
                                                                    VerticalOptions="CenterAndExpand"
                                                                    FontSize="20"
-                                                                   TextColor="LightGray"/>
+                                                                   TextColor="Red"/>
                         </Grid>
 
 
@@ -263,17 +147,10 @@
 
 
 
+
             </ContentView>
 
-
-
-        </StackLayout>
-
-
-
-    </ScrollView>
-
-
+            
 
 
 
