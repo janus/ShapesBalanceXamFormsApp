@@ -29,150 +29,96 @@ namespace ShapesBalanceXamFormsApp
                 return;
             else if(amount < 1000 && amount > 0)
             {
-                makePies(10, 10, 5, 5);
+                double[] percentages = {10.0, 10.0, 5.0, 5.0};
+                makePies(percentages);
             }
             else if (amount > 1000 )
             {
-                makePies(15, 15, 10, 10);
+                double[] percentages = {15.0, 15.0, 10.0, 10.0};
+                makePies(percentages);
             }
 
         }
 
-        public void makePies(double P0, double P1, double P2, double P3)
+        public void makePies(IEnumerable<double> percentages)
         {
 
-            double A0 = (P0 / 100) * 360;
-            double A1 = (P1 / 100) * 360;
-            double A2 = (P2 / 100) * 360;
-            double A3 = (P3 / 100) * 360;
-           
+            if (percentages.Sum() > 100) {
+                throw ArgumentException("Sum of percentages should not be more than 100");
+            }
 
-            double Radius = 150;
-            double cX = 50;
-            double cY = 50;
+            if (percentages.Sum() < 99) {
+                throw ArgumentException("Sum of percentages should not be less than 99");
+            }
+
+            Color[] colors = { Color.Black, Colors.Red, Color.Yellow, Color.Blue, Color.Brown, Color.Indigo, Color.Violet, Color.Orange };
+
+            bool start = true;
+            Point startPoint;
+            Point endPoint;
+            double angleDivision = 360 / percentages.Count();
+            double arcAngle;
+            double baseAngle = 5;
+            double previousArcAngle = 0;
             double angle = 0;
             
             bool largeArc = angle > 180.0;
-            grayPath.HorizontalOptions = LayoutOptions.Center;
-            grayPath.VerticalOptions = LayoutOptions.Center;
-            grayPath.StrokeLineCap = PenLineCap.Round;
-            grayPath.StrokeThickness = 12;
-            pathRoot.StrokeLineCap = PenLineCap.Round;
-            pathRoot.StrokeThickness = 12;
-            pathRoot2.StrokeLineCap = PenLineCap.Round;
-            pathRoot2.StrokeThickness = 12;
-            pathRoot3.StrokeLineCap = PenLineCap.Round;
-            pathRoot3.StrokeThickness = 12;
+            Grid grid =  new Grid();
+            int i = 0;
 
+            foreach (var percantage in percentages)
+            {
+                double Arc = (percantage / 100) * 360;
+                double Radius = 150;
+                double cX = 50;
+                double cY = 50;
+                double angle = 0;
+                if (start == true) {
+                    arcAngle = baseAngle;
+                    start = false;
+                } else {
+                    arcAngle = previousArcAngle + angleDivision;
+                }
 
-            //if (startPoint.X == Math.Round(endPoint.X) && startPoint.Y == Math.Round(endPoint.Y))
-            //    startPoint.X -= 0.01;
+                previousArcAngle = arcAngle;
+                startPoint = ComputeCartesianCoordinate(arcAngle, Radius);
+                endPoint = ComputeCartesianCoordinate(arcAngle + Arc, Radius);
 
+                startPoint.X += Radius + cX;
+                startPoint.Y += Radius + cY;
+                endPoint.X += Radius + cX;
+                endPoint.Y += Radius + cY;
 
+                var path = new Path();
+                path.StrokeLineCap = PenLineCap.Round;
 
+                path.Stroke = new SolidColorBrush(colors[i % colors.Count()]);
+                i++;
+                path.StrokeThickness = 4;
+                path.HorizontalOptions = HorizontalAlignment.Start;
+                path.VerticalOptions = VerticalAlignment.Start;
 
+                var arcSegment = new ArcSegment();
+                arcSegment.Point = endPoint;
 
+                arcSegment.SweepDirection = SweepDirection.Clockwise;
+                arcSegment.Size = new Size(Radius, Radius);
+                arcSegment.RotationAngle = angle;
+                arcSegment.IsLargeArc = largeArc;
 
-            //if (startPoint.X == Math.Round(endPoint.X) && startPoint.Y == Math.Round(endPoint.Y))
-            //    endPoint.X -= 0.01;
+                var segments = new PathSegmentCollection();
+                segments.Add(arcSegment);
+                var pathFigure = new PathFigure() {
+                    StartPoint = startPoint,
+                    Segments = segments
 
+                };
 
-            /////////////////////////////////////////////////////////////
-            ///ARC0
-            /////////////////////////////////////////////////////////////
-
-            double arcAngle = 5;
-            Point startPoint = ComputeCartesianCoordinate(arcAngle, Radius);
-            Point endPoint = ComputeCartesianCoordinate(arcAngle + A0, Radius);
-
-            startPoint.X += Radius + cX;
-            startPoint.Y += Radius + cY;
-            endPoint.X += Radius + cX;
-            endPoint.Y += Radius + cY;
-            grayPathFigure.StartPoint = startPoint;//new Point(50, 200);
-            grayArcSegment.Point = endPoint;//new Point(100, 90);
-            ////
-            grayArcSegment.SweepDirection = SweepDirection.Clockwise;
-            grayArcSegment.Size = new Size(Radius, Radius);
-            grayArcSegment.RotationAngle = angle;
-            grayArcSegment.IsLargeArc = largeArc;
-            /////////////////////////////////////////////////////////////
-            ///ARC1
-            /////////////////////////////////////////////////////////////
-            double arc1Angle = 95;
-
-            startPoint = ComputeCartesianCoordinate(arc1Angle, Radius);
-            startPoint.X += Radius + cX;
-            startPoint.Y += Radius + cY;
-            //if (startPoint.X == Math.Round(endPoint.X) && startPoint.Y == Math.Round(endPoint.Y))
-            //    startPoint.X -= 0.01;
-
-
-            endPoint = ComputeCartesianCoordinate(arc1Angle + A1, Radius);
-            endPoint.X += Radius + cX;
-            endPoint.Y += Radius + cY;
-            //if (startPoint.X == Math.Round(endPoint.X) && startPoint.Y == Math.Round(endPoint.Y))
-            //    endPoint.X -= 0.01;
-
-            pathFigure.StartPoint = startPoint; //new Point(endPoint.X, endPoint.Y + 15);
-            arcSegment.Point = endPoint;
-            ////
-            arcSegment.SweepDirection = SweepDirection.Clockwise;
-            arcSegment.Size = new Size(Radius, Radius);
-            arcSegment.RotationAngle = angle;
-            arcSegment.IsLargeArc = largeArc;
-            /////////////////////////////////////////////////////////////
-            ///ARC2
-            /////////////////////////////////////////////////////////////
-            double arc2Angle = 185;
-
-            startPoint = ComputeCartesianCoordinate(arc2Angle, Radius);
-            startPoint.X += Radius + cX;
-            startPoint.Y += Radius + cY;
-            //if (startPoint.X == Math.Round(endPoint.X) && startPoint.Y == Math.Round(endPoint.Y))
-            //    endPoint.X -= 0.01;
-
-
-            endPoint = ComputeCartesianCoordinate(arc2Angle + A2, Radius);
-            endPoint.X += Radius + cX;
-            endPoint.Y += Radius + cY;
-            //if (startPoint.X == Math.Round(endPoint.X) && startPoint.Y == Math.Round(endPoint.Y))
-            //    endPoint.X -= 0.01;
-
-
-            pathFigure2.StartPoint = startPoint;
-            arcSegment2.Point = endPoint;
-            ////
-            arcSegment2.SweepDirection = SweepDirection.Clockwise;
-            arcSegment2.Size = new Size(Radius, Radius);
-            arcSegment2.RotationAngle = angle;
-            arcSegment2.IsLargeArc = false;
-            /////////////////////////////////////////////////////////////
-            ///ARC3
-            /////////////////////////////////////////////////////////////
-            double arc3Angle = 275;
-
-            startPoint = ComputeCartesianCoordinate(arc3Angle, Radius);
-            startPoint.X += Radius + cX;
-            startPoint.Y += Radius + cY;
-            //if (startPoint.X == Math.Round(endPoint.X) && startPoint.Y == Math.Round(endPoint.Y))
-            //    endPoint.X -= 0.01;
-
-
-            endPoint = ComputeCartesianCoordinate(arc3Angle + A3, Radius);
-            endPoint.X += Radius + cX;
-            endPoint.Y += Radius + cY;
-            //if (startPoint.X == Math.Round(endPoint.X) && startPoint.Y == Math.Round(endPoint.Y))
-            //    endPoint.X -= 0.01;
-
-            pathFigure3.StartPoint = startPoint;
-            arcSegment3.Point = endPoint;
-
-            arcSegment3.SweepDirection = SweepDirection.Clockwise;
-            arcSegment3.Size = new Size(Radius, Radius);
-            arcSegment3.RotationAngle = angle;
-            arcSegment3.IsLargeArc = false;
-
+                var figures = new PathFigureCollection();
+                figures.Add(pathFigure);
+                path.Data = new PathGeometry() { Figures =  figures  };
+                grid.Children.Add(path);
+            }
         }
 
         public MainPage()
