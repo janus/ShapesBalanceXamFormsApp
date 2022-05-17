@@ -30,11 +30,11 @@ jobs:
           sudo apt-add-repository 'deb https://download.mono-project.com/repo/ubuntu stable-focal main'
           sudo apt install mono-complete
           mono --version
+          sudo apt-get install -y libgtk2.0-cil-dev
       - name: Build
         run: |
-          dotnet restore
-          dotnet build ShapesBalanceXamFormsApp/ShapesBalanceXamFormsApp.csproj
+          nuget restore
+          msbuild ShapesBalanceXamFormsApp/ShapesBalanceXamFormsApp.csproj
       - name: Build for GTK
         run: |
-          sudo apt-get install -y libgtk2.0-cil-dev
-          dotnet build GTK/GTK.csproj
+          msbuild GTK/GTK.csproj
