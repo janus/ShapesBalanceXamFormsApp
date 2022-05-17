@@ -44,11 +44,11 @@ namespace ShapesBalanceXamFormsApp
         {
 
             if (percentages.Sum() > 100) {
-                throw ArgumentException("Sum of percentages should not be more than 100");
+                throw new ArgumentException("Sum of percentages should not be more than 100");
             }
 
             if (percentages.Sum() < 99) {
-                throw ArgumentException("Sum of percentages should not be less than 99");
+                throw new ArgumentException("Sum of percentages should not be less than 99");
             }
 
             Color[] colors = { Color.Black, Colors.Red, Color.Yellow, Color.Blue, Color.Brown, Color.Indigo, Color.Violet, Color.Orange };
