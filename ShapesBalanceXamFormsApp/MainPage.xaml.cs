@@ -66,6 +66,60 @@ namespace ShapesBalanceXamFormsApp
             Grid grid =  new Grid();
             int i = 0;
 
+            StackLayout layout = new StackLayout();
+            layout.VerticalOptions = LayoutOptions.Center;
+            layout.HorizontalOptions = LayoutOptions.Center;
+            layout.Orientation = StackOrientation.Vertical;
+            layout.Spacing = 1.0;
+            layout.TranslationY = 170.0;
+
+            Grid gridCurrency = new Grid();
+            Label currency = new Label() {
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions= LayoutOptions.CenterAndExpand,
+                FontSize = 40.0,
+                TextColor = Color.Red
+            };
+
+            gridCurrency.Children.Add(currency);
+            Grid gridAmount = new Grid();
+            Label amount = new Label() {
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions= LayoutOptions.CenterAndExpand,
+                FontSize = 40.0,
+                TextColor = Color.Red
+            };
+
+            gridAmount.Children.Add(amount);
+            StackLayout innerLayout = new StackLayout();
+            innerLayout.HorizontalOptions = LayoutOptions.Center;
+            innerLayout.Orientation = StackOrientation.Horizontal;
+            innerLayout.Spacing = 1.0;
+            innerLayout.TranslationX = 0.0;
+            innerLayout.Children.Add(gridCurrency);
+            innerLayout.Children.Add(gridAmount);
+            Grid enclosing = new Grid();
+            enclosing.Children.Add(innerLayout);
+            Grid gridAccountBalance = new Grid();
+            Label accountBalance = new Label() {
+                Text = "Account Balance",
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions= LayoutOptions.CenterAndExpand,
+                FontSize = 20.0,
+                TextColor = Color.Red
+            };
+            gridAccountBalance.Children.Add(accountBalance);
+            layout.Children.Add(enclosing);
+            layout.Children.Add(gridAccountBalance);
+
+            RelativeLayout relativeLayout = new RelativeLayout() {
+                HeightRequest = 500.0,
+                WidthRequest = 500.0,
+                BackgroundColor = Color.White,
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.Center
+            };
+
             foreach (var percantage in percentages)
             {
                 double Arc = (percantage / 100) * 360;
@@ -110,14 +164,23 @@ namespace ShapesBalanceXamFormsApp
                 var pathFigure = new PathFigure() {
                     StartPoint = startPoint,
                     Segments = segments
-
                 };
 
                 var figures = new PathFigureCollection();
                 figures.Add(pathFigure);
                 path.Data = new PathGeometry() { Figures =  figures  };
-                grid.Children.Add(path);
+                relativeLayout.Children.Add(
+                    path,
+                    Constraint.Constant(0),
+                    Constraint.Constant(0));
             }
+
+            relativeLayout.Children.Add(
+                layout,
+                Constraint.Constant(0),
+                Constraint.Constant(0));
+            Content = relativeLayout;
+
         }
 
         public MainPage()
