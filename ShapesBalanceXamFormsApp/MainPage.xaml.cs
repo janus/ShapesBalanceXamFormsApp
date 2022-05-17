@@ -72,7 +72,6 @@ namespace ShapesBalanceXamFormsApp
                 double Radius = 150;
                 double cX = 50;
                 double cY = 50;
-                double angle = 0;
                 if (start == true) {
                     arcAngle = baseAngle;
                     start = false;
