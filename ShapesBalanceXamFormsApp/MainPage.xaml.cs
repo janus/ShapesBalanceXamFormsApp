@@ -51,7 +51,7 @@ namespace ShapesBalanceXamFormsApp
                 throw new ArgumentException("Sum of percentages should not be less than 99");
             }
 
-            Color[] colors = { Color.Black, Colors.Red, Color.Yellow, Color.Blue, Color.Brown, Color.Indigo, Color.Violet, Color.Orange };
+            Color[] colors = { Color.Black, Color.Red, Color.Yellow, Color.Blue, Color.Brown, Color.Indigo, Color.Violet, Color.Orange };
 
             bool start = true;
             Point startPoint;
