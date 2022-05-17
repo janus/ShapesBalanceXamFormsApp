@@ -31,10 +31,11 @@ jobs:
           sudo apt install mono-complete
           mono --version
           sudo apt-get install -y libgtk2.0-cil-dev
+      - name: Restore packages
+        run: nuget restore
       - name: Build
         run: |
-          nuget restore
           msbuild ShapesBalanceXamFormsApp/ShapesBalanceXamFormsApp.csproj
       - name: Build for GTK
-        run: |
-          msbuild GTK/GTK.csproj
+        run: msbuild GTK/GTK.csproj
+
