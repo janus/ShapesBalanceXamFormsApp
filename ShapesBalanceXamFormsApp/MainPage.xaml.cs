@@ -95,8 +95,8 @@ namespace ShapesBalanceXamFormsApp
                 path.Stroke = new SolidColorBrush(colors[i % colors.Count()]);
                 i++;
                 path.StrokeThickness = 4;
-                path.HorizontalOptions = HorizontalAlignment.Start;
-                path.VerticalOptions = VerticalAlignment.Start;
+                path.HorizontalOptions = LayoutOptions.Start;
+                path.VerticalOptions = LayoutOptions.Start;
 
                 var arcSegment = new ArcSegment();
                 arcSegment.Point = endPoint;
