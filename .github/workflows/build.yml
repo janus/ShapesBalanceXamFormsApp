@@ -1,8 +1,21 @@
 name: Build
 on: [push, pull_request]
 jobs:
-  build:
+  build-for-windows:
     runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET SDK 6.0
+        uses: actions/setup-dotnet@v1
+        with:
+            dotnet-version: 6.0.x
+      - name: Build
+        run: |
+          nuget restore
+          dotnet build ShapesBalanceXamFormsApp/ShapesBalanceXamFormsApp.csproj
+
+  build-for-linux:
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - name: Setup .NET SDK 6.0
