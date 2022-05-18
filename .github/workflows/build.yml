@@ -26,6 +26,7 @@ jobs:
         run: |
           sudo apt install --yes fsharp nunit-console
           sudo apt-get install -y libgtk2.0-cil-dev
+          sudo apt-get install gtk-sharp2
       - name: check mono version
         run: mono --version
       - name: Restore packages
