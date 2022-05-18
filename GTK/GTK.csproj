@@ -11,10 +11,6 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
 
-  <PropertyGroup>
-   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  </PropertyGroup>
-
   <ItemGroup>
     <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
     <Reference Include="glib-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
@@ -26,4 +22,5 @@
     <ProjectReference Include="..\ShapesBalanceXamFormsApp\ShapesBalanceXamFormsApp.csproj" />
   </ItemGroup>
 
+ <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
