@@ -10,11 +10,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
-    <Reference Include="glib-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>false</Private>
+      <HintPath>\usr\lib\mono\gac\gtk-sharp\2.12.0.0__35e10195dab3c99f\gtk-sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="glib-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>false</Private>
+      <HintPath>\usr\lib\mono\gac\glib-sharp\2.12.0.0__35e10195dab3c99f\glib-sharp.dll</HintPath>
+    </Reference>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2401" />
     <PackageReference Include="Xamarin.Forms.Platform.GTK" Version="5.0.0.2401" />
   </ItemGroup>
+
 
   <ItemGroup>
     <ProjectReference Include="..\ShapesBalanceXamFormsApp\ShapesBalanceXamFormsApp.csproj" />
