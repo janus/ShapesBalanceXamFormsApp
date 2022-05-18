@@ -1,8 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.7.1" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net471</TargetFramework>
+    <TargetFrameworks>net471</TargetFrameworks>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
   </PropertyGroup>
 
@@ -22,5 +20,4 @@
     <ProjectReference Include="..\ShapesBalanceXamFormsApp\ShapesBalanceXamFormsApp.csproj" />
   </ItemGroup>
 
- <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
