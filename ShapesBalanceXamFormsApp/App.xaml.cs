@@ -9,10 +9,9 @@ namespace ShapesBalanceXamFormsApp
         public App()
         {
             InitializeComponent();
-            double[] percentages = {15.0, 15.0, 10.0, 10.0};
-            MainPage = new ContentPage {
-                Content = new MainPage().makePies(percentages)
-            };
+
+            MainPage = new MainPage();
+
 
         }
 

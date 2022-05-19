@@ -29,27 +29,27 @@ namespace ShapesBalanceXamFormsApp
                 return;
             else if(amount < 1000 && amount > 0)
             {
-                double[] percentages = {10.0, 10.0, 5.0, 5.0};
-                makePies(percentages);
+
+                makePies(10, 10, 5, 5);
             }
             else if (amount > 1000 )
             {
-                double[] percentages = {15.0, 15.0, 10.0, 10.0};
-                makePies(percentages);
+                makePies(15, 15, 10, 10);
             }
 
         }
 
-        public RelativeLayout makePies(IEnumerable<double> percentages)
+        public RelativeLayout makePies(double P0, double P1, double P2, double P3)
         {
 
-            if (percentages.Sum() > 100) {
-                throw new ArgumentException("Sum of percentages should not be more than 100");
-            }
+            double[] percentages = {P0, P1, P2, P3};
+          //  if (percentages.Sum() > 100) {
+          //      throw new ArgumentException("Sum of percentages should not be more than 100");
+          //  }
 
-            if (percentages.Sum() < 99) {
-                throw new ArgumentException("Sum of percentages should not be less than 99");
-            }
+           // if (percentages.Sum() < 99) {
+            //    throw new ArgumentException("Sum of percentages should not be less than 99");
+            //}
 
             Color[] colors = { Color.Black, Color.Red, Color.Yellow, Color.Blue, Color.Brown, Color.Indigo, Color.Violet, Color.Orange };
 
@@ -75,26 +75,31 @@ namespace ShapesBalanceXamFormsApp
 
             Grid gridCurrency = new Grid();
             Label currency = new Label() {
+                Text = "€",
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions= LayoutOptions.CenterAndExpand,
-                FontSize = 40.0,
-                TextColor = Color.Red
+                FontSize = 20.0,
+                TextColor =  Color.Black,
+                TranslationY = -10
             };
 
             gridCurrency.Children.Add(currency);
             Grid gridAmount = new Grid();
+            double amountValue = 2000;
+            string  amountConverted = amountValue.ToString();
             Label amount = new Label() {
+                Text = amountConverted,
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions= LayoutOptions.CenterAndExpand,
-                FontSize = 40.0,
-                TextColor = Color.Red
+                FontSize = 20.0,
+                TextColor = Color.Black
             };
 
             gridAmount.Children.Add(amount);
             StackLayout innerLayout = new StackLayout();
             innerLayout.HorizontalOptions = LayoutOptions.Center;
             innerLayout.Orientation = StackOrientation.Horizontal;
-            innerLayout.Spacing = 1.0;
+            innerLayout.Spacing = 4.0;
             innerLayout.TranslationX = 0.0;
             innerLayout.Children.Add(gridCurrency);
             innerLayout.Children.Add(gridAmount);
@@ -109,8 +114,8 @@ namespace ShapesBalanceXamFormsApp
                 TextColor = Color.Red
             };
             gridAccountBalance.Children.Add(accountBalance);
-            layout.Children.Add(enclosing);
             layout.Children.Add(gridAccountBalance);
+            layout.Children.Add(enclosing);
 
             RelativeLayout relativeLayout = new RelativeLayout() {
                 HeightRequest = 500.0,
@@ -120,9 +125,9 @@ namespace ShapesBalanceXamFormsApp
                 VerticalOptions = LayoutOptions.Center
             };
 
-            foreach (var percantage in percentages)
+            foreach (var percentage in percentages)
             {
-                double Arc = (percantage / 100) * 360;
+                double Arc = (percentage / 100) * 360;
                 double Radius = 150;
                 double cX = 50;
                 double cY = 50;
