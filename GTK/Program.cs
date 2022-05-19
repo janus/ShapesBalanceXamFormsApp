@@ -1,7 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.GTK;
-
+using ShapesBalanceXamFormsApp;
 namespace GTK
 {
     class MainClass
@@ -12,7 +12,7 @@ namespace GTK
             Gtk.Application.Init();
             Forms.Init();
 
-            var app = new ShapesBalanceXamFormsApp.MainPage();
+            var app = new App();
             var window = new FormsWindow();
             window.LoadApplication(app);
             window.SetApplicationTitle("Forms App");

@@ -40,7 +40,7 @@ namespace ShapesBalanceXamFormsApp
 
         }
 
-        public void makePies(IEnumerable<double> percentages)
+        public RelativeLayout makePies(IEnumerable<double> percentages)
         {
 
             if (percentages.Sum() > 100) {
@@ -179,30 +179,13 @@ namespace ShapesBalanceXamFormsApp
                 layout,
                 Constraint.Constant(0),
                 Constraint.Constant(0));
-            Content = relativeLayout;
 
+            return relativeLayout;
         }
 
         public MainPage()
         {
-          InitializeComponent();
-        
-
-
-
-            //constants
-
-            double amount = 2000;
-            Currency.Text = "€";
-            Amount.Text = amount.ToString();
-
-            Currency.TextColor = Color.Black;
-            Currency.FontSize = 20;
-            Currency.TranslationY = -10;
-            Amount.TextColor = Color.Black;
-
-            render(amount);
-            //label.Text = amount.ToString();
+            InitializeComponent();
             
 
         }

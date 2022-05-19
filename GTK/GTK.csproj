@@ -29,4 +29,8 @@
     <ProjectReference Include="..\ShapesBalanceXamFormsApp\ShapesBalanceXamFormsApp.csproj" />
   </ItemGroup>
 
+  <PropertyGroup>
+    <MSBuildWarningsAsMessages>$(MSBuildWarningsAsMessages);NETSDK1106</MSBuildWarningsAsMessages>
+  </PropertyGroup>
+
 </Project>
