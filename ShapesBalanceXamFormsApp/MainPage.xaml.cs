@@ -14,7 +14,8 @@ namespace ShapesBalanceXamFormsApp
         private Point ComputeCartesianCoordinate(double angle, double radius)
         {
             // convert to radians
-            double angleRad = (Math.PI / 180.0) * (angle - 90);
+            // This formula is from this link, https://www.google.com/search?q=angle+to+radians&oq=angle+to+&aqs=chrome.1.69i57j0i512j0i20i263i512j0i512l7.11503j0j4&sourceid=chrome&ie=UTF-8
+            double angleRad = (Math.PI / 180.0) * angle;
 
             double x = radius * Math.Cos(angleRad);
             double y = radius * Math.Sin(angleRad);
@@ -191,7 +192,6 @@ namespace ShapesBalanceXamFormsApp
         {
            double amount = 2000;
            render(amount);
-            
 
         }
 
