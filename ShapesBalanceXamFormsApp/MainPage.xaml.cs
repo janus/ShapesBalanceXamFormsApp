@@ -135,8 +135,8 @@ namespace ShapesBalanceXamFormsApp
                     start = false;
                     startPoint = ComputeCartesianCoordinate(arcAngle, Radius);
                     System.Console.WriteLine("{0}", startPoint);
-                    previousStartPoint.X = startPoint.X;
-                    previousStartPoint.Y = startPoint.Y;
+                    previousStartPoint.X = startPoint.X + Radius ;
+                    previousStartPoint.Y = startPoint.Y + Radius ;
                 } else {
                     arcAngle = previousArcAngle;
                 }
@@ -158,7 +158,7 @@ namespace ShapesBalanceXamFormsApp
                 i++;
                 System.Console.WriteLine("EndPoint {0}", endPoint);
                 System.Console.WriteLine("previousStartPoint {0}", previousStartPoint);
-                path.StrokeThickness = 4;
+                path.StrokeThickness = 12;
                 System.Console.WriteLine("{0}", i);
                 var arcSegment = new ArcSegment();
                 arcSegment.Point = endPoint;
@@ -177,18 +177,18 @@ namespace ShapesBalanceXamFormsApp
 
                 var figures = new PathFigureCollection();
                 figures.Add(pathFigure);
-                path.Data = new PathGeometry() { Figures =  figures  };
+                path.Data = new PathGeometry() { Figures =  figures };
+
                 relativeLayout.Children.Add(
                     path,
-                    () => new Xamarin.Forms.Rectangle(100, 140, 500, 500));
-
+                    () => new Xamarin.Forms.Rectangle(90, 160, 500, 500));
 
                 previousStartPoint = endPoint;
             }
 
             relativeLayout.Children.Add(
                 layout,
-            () => new Xamarin.Forms.Rectangle(150, 70, 200, 200));
+                () => new Xamarin.Forms.Rectangle(167, 84, 200, 200));
 
             Content = relativeLayout;
         }
