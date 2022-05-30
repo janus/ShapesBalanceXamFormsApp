@@ -20,18 +20,12 @@ namespace ShapesBalanceXamFormsApp
 
         public void render(double amount)
         {
-            double[] percentages = new double[] {};
-            if(amount < 0)
+            if(amount < 0) {
                 return;
-            else if(amount < 1000 && amount > 0)
-            {
-                percentages = new double[] {10.0, 10.0, 5.0, 5.0, 30.9, 10.0, 9.0, 20.0};
+            } else {
+                double[] percentages = {15.0, 15.0, 10.0, 10.0, 30.9, 10.0, 9.0};
+                makePies(amount, percentages);
             }
-            else if (amount > 1000 )
-            {
-                percentages = new double[] {15.0, 15.0, 10.0, 10.0, 30.9, 10.0, 9.0};
-            }
-            makePies(amount, percentages);
         }
 
         public void makePies(double balance, IEnumerable<double> percentages)
