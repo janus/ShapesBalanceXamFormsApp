@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Shapes;
 
@@ -15,7 +12,6 @@ namespace ShapesBalanceXamFormsApp
         {
             // convert to radians
             double angleRad = (Math.PI / 180.0) * angle;
-
             double x = radius * Math.Cos(angleRad);
             double y = radius * Math.Sin(angleRad);
 
@@ -24,25 +20,22 @@ namespace ShapesBalanceXamFormsApp
 
         public void render(double amount)
         {
-
+            double[] percentages = new double[] {};
             if(amount < 0)
                 return;
             else if(amount < 1000 && amount > 0)
             {
-                double[] percentages = {10.0, 10.0, 5.0, 5.0, 30.9, 10.0, 9.0, 20.0};
-                makePies(amount, percentages);
+                percentages = new double[] {10.0, 10.0, 5.0, 5.0, 30.9, 10.0, 9.0, 20.0};
             }
             else if (amount > 1000 )
             {
-                double[] percentages = {15.0, 15.0, 10.0, 10.0, 30.9, 10.0, 9.0};
-                makePies(amount, percentages);
+                percentages = new double[] {15.0, 15.0, 10.0, 10.0, 30.9, 10.0, 9.0};
             }
-
+            makePies(amount, percentages);
         }
 
         public void makePies(double balance, IEnumerable<double> percentages)
         {
-
             if (percentages.Sum() > 100) {
                 throw new ArgumentException("Sum of percentages should not be more than 100");
             }
@@ -60,7 +53,7 @@ namespace ShapesBalanceXamFormsApp
             double arcAngle;
             double previousArcAngle = 0;
             double angle = 0;
-            
+
             Grid grid =  new Grid();
             int i = 0;
 
@@ -68,7 +61,6 @@ namespace ShapesBalanceXamFormsApp
             layout.VerticalOptions = LayoutOptions.Center;
             layout.HorizontalOptions = LayoutOptions.Center;
             layout.Orientation = StackOrientation.Vertical;
-            //layout.Spacing = 1.0;
             layout.TranslationY = 150.0;
 
             Grid gridCurrency = new Grid();
@@ -100,6 +92,7 @@ namespace ShapesBalanceXamFormsApp
             innerLayout.TranslationX = 0.0;
             innerLayout.Children.Add(gridCurrency);
             innerLayout.Children.Add(gridAmount);
+
             Grid enclosing = new Grid();
             enclosing.Children.Add(innerLayout);
             Grid gridAccountBalance = new Grid();
@@ -110,6 +103,7 @@ namespace ShapesBalanceXamFormsApp
                 FontSize = 20.0,
                 TextColor = Color.Red
             };
+
             gridAccountBalance.Children.Add(accountBalance);
             layout.Children.Add(enclosing);
             layout.Children.Add(gridAccountBalance);
@@ -138,19 +132,17 @@ namespace ShapesBalanceXamFormsApp
 
                 previousArcAngle = arcAngle + Arc;
                 endPoint = ComputeCartesianCoordinate(arcAngle + Arc, Radius);
-
                 endPoint.X += Radius;
                 endPoint.Y += Radius;
 
                 var path = new Path();
                 path.StrokeLineCap = PenLineCap.Round;
-
                 path.Stroke = new SolidColorBrush(colors[i % colors.Count()]);
                 i++;
                 path.StrokeThickness = 12;
+
                 var arcSegment = new ArcSegment();
                 arcSegment.Point = endPoint;
-
                 arcSegment.SweepDirection = SweepDirection.Clockwise;
                 arcSegment.Size = new Size(Radius, Radius);
                 arcSegment.RotationAngle = angle;
@@ -177,15 +169,12 @@ namespace ShapesBalanceXamFormsApp
             relativeLayout.Children.Add(
                 layout,
                 () => new Xamarin.Forms.Rectangle(167, 55, 200, 200));
-
             Content = relativeLayout;
         }
         public MainPage()
         {
            double amount = 2000;
            render(amount);
-
         }
-
     }
 }
