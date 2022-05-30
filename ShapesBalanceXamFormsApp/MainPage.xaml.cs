@@ -122,9 +122,9 @@ namespace ShapesBalanceXamFormsApp
 
             Point previousStartPoint = new Point(0,0);
 
-            foreach (var percantage in percentages)
+            foreach (var percentage in percentages)
             {
-                double Arc = (percantage / 100) * 360;
+                double Arc = (percentage / 100) * 360;
                 double Radius = 150;
                 if (start == true) {
                     arcAngle = 0;
@@ -154,7 +154,7 @@ namespace ShapesBalanceXamFormsApp
                 arcSegment.SweepDirection = SweepDirection.Clockwise;
                 arcSegment.Size = new Size(Radius, Radius);
                 arcSegment.RotationAngle = angle;
-                arcSegment.IsLargeArc = false;
+                arcSegment.IsLargeArc = Arc > 180;
 
                 var segments = new PathSegmentCollection();
                 segments.Add(arcSegment);
