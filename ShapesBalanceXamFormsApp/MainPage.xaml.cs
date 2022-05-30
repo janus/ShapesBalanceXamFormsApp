@@ -105,10 +105,13 @@ namespace ShapesBalanceXamFormsApp
             RelativeLayout relativeLayout = new RelativeLayout() {
                 BackgroundColor = Color.White,
                 HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.Center
+                VerticalOptions = LayoutOptions.Center,
+                HeightRequest = 500,
+                WidthRequest = 500
             };
 
             Point previousStartPoint = new Point(0,0);
+            Grid paths = new Grid() ;
 
             foreach (var percentage in percentages)
             {
@@ -153,16 +156,18 @@ namespace ShapesBalanceXamFormsApp
                 figures.Add(pathFigure);
                 path.Data = new PathGeometry() { Figures =  figures };
 
-                relativeLayout.Children.Add(
-                    path,
-                    () => new Xamarin.Forms.Rectangle(120, 160, 500, 500));
+                paths.Children.Add(path);
 
                 previousStartPoint = endPoint;
             }
 
             relativeLayout.Children.Add(
+                paths, 
+                () => new Xamarin.Forms.Rectangle(40, 120, 400, 400));
+
+            relativeLayout.Children.Add(
                 layout,
-                () => new Xamarin.Forms.Rectangle(167, 55, 200, 200));
+                () => new Xamarin.Forms.Rectangle(110, 10, 200, 200));
             Content = relativeLayout;
         }
         public MainPage()
