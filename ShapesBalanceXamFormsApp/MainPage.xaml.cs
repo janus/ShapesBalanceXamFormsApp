@@ -81,6 +81,7 @@ namespace ShapesBalanceXamFormsApp
             gridAmount.Children.Add(amount);
             StackLayout innerLayout = new StackLayout();
             innerLayout.HorizontalOptions = LayoutOptions.Center;
+            innerLayout.VerticalOptions = LayoutOptions.Center;
             innerLayout.Orientation = StackOrientation.Horizontal;
             innerLayout.Spacing = 1.0;
             innerLayout.TranslationX = 0.0;
@@ -111,7 +112,10 @@ namespace ShapesBalanceXamFormsApp
             };
 
             Point previousStartPoint = new Point(0,0);
-            Grid paths = new Grid() ;
+            Grid paths = new Grid();
+
+            double startOffsetX = 50;
+            double startOffsetY = 50;
 
             foreach (var percentage in percentages)
             {
@@ -121,16 +125,16 @@ namespace ShapesBalanceXamFormsApp
                     arcAngle = 0;
                     start = false;
                     startPoint = ComputeCartesianCoordinate(arcAngle, Radius);
-                    previousStartPoint.X = startPoint.X + Radius ;
-                    previousStartPoint.Y = startPoint.Y + Radius ;
+                    previousStartPoint.X = startOffsetX + startPoint.X + Radius ;
+                    previousStartPoint.Y = startOffsetY + startPoint.Y + Radius ;
                 } else {
                     arcAngle = previousArcAngle;
                 }
 
                 previousArcAngle = arcAngle + Arc;
                 endPoint = ComputeCartesianCoordinate(arcAngle + Arc, Radius);
-                endPoint.X += Radius;
-                endPoint.Y += Radius;
+                endPoint.X += Radius + startOffsetX;
+                endPoint.Y += Radius + startOffsetY;
 
                 var path = new Path();
                 path.StrokeLineCap = PenLineCap.Round;
@@ -148,10 +152,10 @@ namespace ShapesBalanceXamFormsApp
                 var segments = new PathSegmentCollection();
                 segments.Add(arcSegment);
                 var pathFigure = new PathFigure() {
-                    StartPoint = previousStartPoint,
-                    Segments = segments
+                    StartPoint = previousStartPoint
                 };
 
+                pathFigure.Segments.Add(arcSegment);
                 var figures = new PathFigureCollection();
                 figures.Add(pathFigure);
                 path.Data = new PathGeometry() { Figures =  figures };
@@ -163,11 +167,11 @@ namespace ShapesBalanceXamFormsApp
 
             relativeLayout.Children.Add(
                 paths, 
-                () => new Xamarin.Forms.Rectangle(40, 120, 400, 400));
+                () => new Xamarin.Forms.Rectangle(50, 50, 400, 400));
 
             relativeLayout.Children.Add(
                 layout,
-                () => new Xamarin.Forms.Rectangle(110, 10, 200, 200));
+                () => new Xamarin.Forms.Rectangle(150, 2, 200, 200));
             Content = relativeLayout;
         }
         public MainPage()
